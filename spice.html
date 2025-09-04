@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spice Route | Authentic Indian Cuisine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --saffron: #FF9933;
+            --deep-red: #B22222;
+            --gold: #D4AF37;
+            --spice-brown: #8B4513;
+            --forest-green: #228B22;
+            --cream: #FFF8E7;
+            --dark-spice: #5D4037;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, #FFEBCD 100%);
+            min-height: 100vh;
+            color: var(--dark-spice);
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Animated Background Patterns */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(255, 153, 51, 0.1) 0%, transparent 25%),
+                radial-gradient(circle at 80% 20%, rgba(180, 34, 34, 0.1) 0%, transparent 25%),
+                radial-gradient(circle at 40% 40%, rgba(212, 175, 55, 0.1) 0%, transparent 25%);
+            pointer-events: none;
+            z-index: -1;
+            animation: floatBackground 20s ease-in-out infinite;
+        }
+        
+        @keyframes floatBackground {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(-10px, -10px) rotate(1deg); }
+            50% { transform: translate(0, -15px) rotate(-1deg); }
+            75% { transform: translate(10px, -5px) rotate(1deg); }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            position: relative;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--saffron), var(--deep-red));
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(178, 34, 34, 0.3);
+            animation: pulse 4s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: conic-gradient(transparent, transparent, transparent, var(--gold));
+            animation: rotate 4s linear infinite;
+        }
+        
+        .logo i {
+            color: white;
+            font-size: 3rem;
+            z-index: 1;
+            background: linear-gradient(135deg, var(--saffron), var(--deep-red));
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: var(--dark-spice);
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: slideInDown 1s ease-out;
+        }
+        
+        .header span {
+            color: var(--deep-red);
+        }
+        
+        .header p {
+            font-size: 1.3rem;
+            color: var(--spice-brown);
+            max-width: 600px;
+            margin: 0 auto;
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+        
+        /* Decorative Elements */
+        .decoration {
+            position: absolute;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .decoration-1 {
+            top: 50px;
+            left: 10%;
+            font-size: 8rem;
+            color: var(--saffron);
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .decoration-2 {
+            top: 150px;
+            right: 10%;
+            font-size: 6rem;
+            color: var(--deep-red);
+            animation: float 6s ease-in-out infinite reverse;
+        }
+        
+        .decoration-3 {
+            bottom: 100px;
+            left: 15%;
+            font-size: 7rem;
+            color: var(--gold);
+            animation: float 7s ease-in-out infinite 2s;
+        }
+        
+        /* Menu Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        /* Menu Card */
+        .menu-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(139, 69, 19, 0.15);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+        
+        .menu-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--saffron), var(--deep-red), var(--gold), var(--forest-green));
+            z-index: -1;
+            border-radius: 22px;
+            animation: borderGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        .menu-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(139, 69, 19, 0.25);
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px dotted var(--saffron);
+        }
+        
+        .category-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--deep-red);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .item-count {
+            background: linear-gradient(135deg, var(--saffron), var(--deep-red));
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(178, 34, 34, 0.3);
+        }
+        
+        /* Menu Items */
+        .menu-item {
+            padding: 20px 0;
+            border-bottom: 2px dotted #E8D6C0;
+            transition: all 0.4s ease;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+            position: relative;
+        }
+        
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        
+        .menu-item:hover {
+            transform: translateX(12px);
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 153, 51, 0.1) 100%);
+            border-radius: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin: 0 -15px;
+        }
+        
+        .menu-item:hover::before {
+            content: '🍛';
+            position: absolute;
+            left: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            animation: bounce 0.5s ease;
+        }
+        
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .item-name {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--dark-spice);
+            position: relative;
+        }
+        
+        .item-name::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--saffron);
+            transition: width 0.3s ease;
+        }
+        
+        .menu-item:hover .item-name::after {
+            width: 100%;
+        }
+        
+        .item-price {
+            background: linear-gradient(135deg, var(--saffron), var(--deep-red));
+            color: white;
+            padding: 6px 15px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(178, 34, 34, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .menu-item:hover .item-price {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(178, 34, 34, 0.3);
+        }
+        
+        .item-description {
+            color: var(--spice-brown);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        
+        .item-badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .badge:hover {
+            transform: translateY(-2px);
+        }
+        
+        .spicy {
+            background: linear-gradient(135deg, #DC2626, #B91C1C);
+            color: white;
+        }
+        
+        .vegetarian {
+            background: linear-gradient(135deg, var(--forest-green), #166534);
+            color: white;
+        }
+        
+        .popular {
+            background: linear-gradient(135deg, var(--gold), #B45309);
+            color: white;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(-50%); }
+            40% { transform: translateY(-60%); }
+            60% { transform: translateY(-45%); }
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-top: 3px dotted var(--saffron);
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.1);
+        }
+        
+        .footer p {
+            color: var(--spice-brown);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--dark-spice);
+            font-weight: 500;
+            padding: 12px 20px;
+            background: rgba(255, 153, 51, 0.1);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            background: rgba(255, 153, 51, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .contact-item i {
+            color: var(--deep-red);
+            font-size: 1.2rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 3rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .menu-card {
+                padding: 25px;
+            }
+            
+            .category-title {
+                font-size: 1.7rem;
+            }
+            
+            .decoration {
+                display: none;
+            }
+            
+            .contact-info {
+                gap: 20px;
+            }
+            
+            .contact-item {
+                padding: 10px 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .logo i {
+                font-size: 2.5rem;
+                width: 90px;
+                height: 90px;
+            }
+            
+            .item-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .item-price {
+                align-self: flex-start;
+            }
+            
+            .category-header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Decorative Elements -->
+        <div class="decoration decoration-1">🌶️</div>
+        <div class="decoration decoration-2">🍛</div>
+        <div class="decoration decoration-3">🥘</div>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-utensils"></i>
+            </div>
+            <h1>Spice <span>Route</span></h1>
+            <p>Experience the authentic flavors of India in every bite</p>
+        </header>
+
+        <!-- Menu Grid -->
+        <div class="menu-grid">
+            <!-- Appetizers -->
+            <div class="menu-card">
+                <div class="category-header">
+                    <h2 class="category-title">
+                        <i class="fas fa-apple-alt"></i>
+                        Appetizers
+                    </h2>
+                    <div class="item-count">6</div>
+                </div>
+                
+                <div class="menu-items">
+                    <div class="menu-item delay-1">
+                        <div class="item-header">
+                            <h3 class="item-name">Samosa Chaat</h3>
+                            <span class="item-price">₹180</span>
+                        </div>
+                        <p class="item-description">Crispy samosas topped with chickpeas, yogurt, tamarind chutney, and spices</p>
+                        <div class="item-badges">
+                            <span class="badge vegetarian">Vegetarian</span>
+                            <span class="badge popular">Popular</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item delay-2">
+                        <div class="item-header">
+                            <h3 class="item-name">Paneer Tikka</h3>
+                            <span class="item-price">₹220</span>
+                        </div>
+                        <p class="item-description">Marinated cottage cheese grilled to perfection with bell peppers and onions</p>
+                        <div class="item-badges">
+                            <span class="badge vegetarian">Vegetarian</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item delay-3">
+                        <div class="item-header">
+                            <h3 class="item-name">Chicken 65</h3>
+                            <span class="item-price">₹250</span>
+                        </div>
+                        <p class="item-description">Spicy deep-fried chicken chunks with curry leaves and red chilies</p>
+                        <div class="item-badges">
+                            <span class="badge spicy">Spicy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Courses -->
+            <div class="menu-card">
+                <div class="category-header">
+                    <h2 class="category-title">
+                        <i class="fas fa-utensils"></i>
+                        Main Courses
+                    </h2>
+                    <div class="item-count">8</div>
+                </div>
+                
+                <div class="menu-items">
+                    <div class="menu-item delay-1">
+                        <div class="item-header">
+                            <h3 class="item-name">Butter Chicken</h3>
+                            <span class="item-price">₹320</span>
+                        </div>
+                        <p class="item-description">Tender chicken in rich tomato and butter gravy with cream</p>
+                        <div class="item-badges">
+                            <span class="badge popular">Popular</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item delay-2">
+                        <div class="item-header">
+                            <h3 class="item-name">Paneer Butter Masala</h3>
+                            <span class="item-price">₹280</span>
+                        </div>
+                        <p class="item-description">Soft paneer cubes in creamy tomato and cashew gravy</p>
+                        <div class="item-badges">
+                            <span class="badge vegetarian">Vegetarian</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item delay-3">
+                        <div class="item-header">
+                            <h3 class="item-name">Lamb Rogan Josh</h3>
+                            <span class="item-price">₹380</span>
+                        </div>
+                        <p class="item-description">Kashmiri lamb curry with aromatic spices and yogurt</p>
+                        <div class="item-badges">
+                            <span class="badge spicy">Spicy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Breads & Rice -->
+            <div class="menu-card">
+                <div class="category-header">
+                    <h2 class="category-title">
+                        <i class="fas fa-bread-slice"></i>
+                        Breads & Rice
+                    </h2>
+                    <div class="item-count">5</div>
+                </div>
+                
+                <div class="menu-items">
+                    <div class="menu-item delay-1">
+                        <div class="item-header">
+                            <h3 class="item-name">Garlic Naan</h3>
+                            <span class="item-price">₹80</span>
+                        </div>
+                        <p class="item-description">Traditional tandoor-baked bread with garlic and butter</p>
+                        <div class="item-badges">
+                            <span class="badge vegetarian">Vegetarian</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item delay-2">
+                        <div class="item-header">
+                            <h3 class="item-name">Biryani</h3>
+                            <span class="item-price">₹290</span>
+                        </div>
+                        <p class="item-description">Fragrant rice cooked with spices, herbs, and choice of meat</p>
+                        <div class="item-badges">
+                            <span class="badge popular">Popular</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item delay-3">
+                        <div class="item-header">
+                            <h3 class="item-name">Laccha Paratha</h3>
+                            <span class="item-price">₹70</span>
+                        </div>
+                        <p class="item-description">Layered whole wheat flatbread, flaky and buttery</p>
+                        <div class="item-badges">
+                            <span class="badge vegetarian">Vegetarian</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desserts -->
+            <div class="menu-card">
+                <div class="category-header">
+                    <h2 class="category-title">
+                        <i class="fas fa-ice-cream"></i>
+                        Desserts
+                    </h2>
+                    <div class="item-count">4</div>
+                </div>
+                
+                <div class="menu-items">
+                    <div class="menu-item delay-1">
+                        <div class="item-header">
+                            <h3 class="item-name">Gulab Jamun</h3>
+                            <span class="item-price">₹120</span>
+                        </div>
+                        <p class="item-description">Soft milk balls soaked in rose-flavored sugar syrup</p>
+                        <div class="item-badges">
+                            <span class="badge vegetarian">Vegetarian</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item delay-2">
+                        <div class="item-header">
+                            <h3 class="item-name">Kulfi</h3>
+                            <span class="item-price">₹100</span>
+                        </div>
+                        <p class="item-description">Traditional Indian ice cream with pistachios and cardamom</p>
+                        <div class="item-badges">
+                            <span class="badge vegetarian">Vegetarian</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item delay-3">
+                        <div class="item-header">
+                            <h3 class="item-name">Rasmalai</h3>
+                            <span class="item-price">₹140</span>
+                        </div>
+                        <p class="item-description">Soft cheese patties in sweetened, flavored milk</p>
+                        <div class="item-badges">
+                            <span class="badge vegetarian">Vegetarian</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beverages -->
+            <div class="menu-card">
+                <div class="category-header">
+                    <h2 class="category-title">
+                        <i class="fas fa-glass-martini-alt"></i>
+                        Beverages
+                    </h2>
+                    <div class="item-count">6</div>
+                </div>
+                
+                <div class="menu-items">
+                    <div class="menu-item delay-1">
+                        <div class="item-header">
+                            <h3 class="item-name">Mango Lassi</h3>
+                            <span class="item-price">₹150</span>
+                        </div>
+                        <p class="item-description">Refreshing yogurt drink with ripe mango and spices</p>
+                        <div class="item-badges">
+                            <span class="badge vegetarian">Vegetarian</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item delay-2">
+                        <div class="item-header">
+                            <h3 class="item-name">Masala Chai</h3>
+                            <span class="item-price">₹80</span>
+                        </div>
+                        <p class="item-description">Spiced Indian tea with milk, ginger, and cardamom</p>
+                        <div class="item-badges">
+                            <span class="badge vegetarian">Vegetarian</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item delay-3">
+                        <div class="item-header">
+                            <h3 class="item-name">Nimbu Pani</h3>
+                            <span class="item-price">₹90</span>
+                        </div>
+                        <p class="item-description">Fresh lemonade with Indian spices and mint</p>
+                        <div class="item-badges">
+                            <span class="badge vegetarian">Vegetarian</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>🍛 Experience the taste of India at Spice Route 🍛</p>
+            <p>Open Daily: 11:00 AM - 11:00 PM</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+91 98765 43210</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>123 Spice Street, Mumbai</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@spiceroute.com</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
